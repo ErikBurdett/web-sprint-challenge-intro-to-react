@@ -2,7 +2,7 @@
 import React from "react"
 import styled from "styled-components";
 
-const characterStyle = styled.div`
+const CharacterStyle = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -36,8 +36,9 @@ const characterStyle = styled.div`
     `
     
     const Character  =  (props) => {
+      console.log(props.character)
     return (
-        <characterStyle>
+        <CharacterStyle>
       <div className="character-container">
         <div className="character-info">
           <div>
@@ -50,7 +51,15 @@ const characterStyle = styled.div`
             <p>Species: {props.character.species}</p>
           </div>
         </div>
-      </div></characterStyle>)}
+      </div></CharacterStyle>)}
+
+{/* <characterStyle>{
+  characterInfo && characterInfo.map(character => {
+  <Character key={character.id} 
+      info={character}
+    />
+   )})}
+   </characterStyle> */}
 
 
 export default Character;

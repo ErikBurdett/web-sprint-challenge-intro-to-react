@@ -6,13 +6,14 @@ import styled from "styled-components"
 
 const App = () => {
 
-const {characterInfo, setcharacterInfo} = useState([]);
+const [characters, setcharacterInfo] = useState([]);
 
 useEffect(() => {
   axios.get('https://swapi.dev/api/people/')
 
   .then((res) => {
-    setcharacterInfo(res.data.results);
+    console.log(res.data)
+    setcharacterInfo(res.data);
   })
 
   .catch((err) => {
@@ -23,12 +24,14 @@ useEffect(() => {
   return (
     <div className="App">
       <h1 className="Header">Star Wars Characters</h1>
-      <characterStyle>{characterInfo && characterInfo.map(character => {
+     {characters.map((character) => (
+       <Character
+       key={character.name}
+       character={character}
+       
+       />
 
- return (<Character key={character.id} 
-          info={character}
-        />
-       )})}</characterStyle>
+     ))}
     </div>
   );
 }
